@@ -4,3 +4,4 @@ from .models import Driver, Car,Pickup,tags
 admin.site.register(Driver)
 admin.site.register(Car)
 admin.site.register(Pickup)
+admin.site.register(tags)
