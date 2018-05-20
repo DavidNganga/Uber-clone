@@ -10,7 +10,7 @@ class Car(models.Model):
 
 class Location(models.Model):
     longitude = models.IntegerField()
-    # latitude = models.IntegerField()
+    latitude = models.IntegerField()
 
 class Destination(models.Model):
     name = models.CharField(max_length =30)
