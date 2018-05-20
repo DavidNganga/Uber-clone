@@ -12,18 +12,19 @@ class Pickup(models.Model):
     longitude = models.IntegerField()
     latitude = models.IntegerField()
 
-class tags(models.Model):
-    destination = models.CharField(max_length =30)
+class Destination(models.Model):
+    name = models.CharField(max_length =30)
 
     def __str__(self):
         return self.destination
 
 class Driver(models.Model):
+    user=models.OneToOneField(User, on_delete=models.CASCADE)
+
     name = models.CharField(max_length=30)
-    car = models.ForeignKey(Car, on_delete=models.CASCADE,null=True)
-    pickup = models.ForeignKey(Pickup, on_delete=models.CASCADE,null=True)
+    destination = models.ForeignKey(Pickup, on_delete=models.CASCADE,null=True)
     phone = models.IntegerField()
-    tags = models.ManyToManyField(tags)
+
 
     @classmethod
     def get_all(cls):
