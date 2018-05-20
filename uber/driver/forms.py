@@ -3,7 +3,7 @@ from django import forms
 class DriveDetailsForm(forms.ModelForm):
     class Meta:
         model = Driver
-        exclude = []
+        exclude = ["user"]
         widgets = {
         'tags': forms.CheckboxSelectMultiple(),
         }

@@ -24,39 +24,39 @@ def drive(request):
 def car(request):
     current_user = request.user
     if request.method == 'POST':
-        form = CarDetailsForm(request.POST, request.FILES)
+        form = CarForm(request.POST, request.FILES)
         if form.is_valid():
             car = form.save(commit=False)
             car.user = current_user
             car.save()
             return redirect('welcome')
     else:
-        form = CarDetailsForm()
+        form = CarForm()
     return render(request, 'cardetails.html', {"form": form})
 
 def pickup(request):
     current_user = request.user
     if request.method == 'POST':
-        form =  PickupDetailsForm(request.POST, request.FILES)
+        form =  PickupForm(request.POST, request.FILES)
         if form.is_valid():
             pickup = form.save(commit=False)
             pickup.user = current_user
             pickup.save()
             return redirect('welcome')
     else:
-        form = PickupDetailsForm()
+        form = PickupForm()
     return render(request, 'pickupdetails.html', {"form": form})
 
 
 def destination(request):
     current_user = request.user
     if request.method == 'POST':
-        form =  TagsForm(request.POST, request.FILES)
+        form =  DestinationForm(request.POST, request.FILES)
         if form.is_valid():
             tags = form.save(commit=False)
             tags.user = current_user
             tags.save()
             return redirect('welcome')
     else:
-        form = TagsForm()
+        form = DestinationForm()
     return render(request, 'destination.html', {"form": form})
