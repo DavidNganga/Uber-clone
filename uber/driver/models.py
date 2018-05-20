@@ -8,9 +8,9 @@ class Car(models.Model):
     number_plate = models.CharField(max_length=30)
     seat_numbers = models.IntegerField()
 
-class Pickup(models.Model):
+class Location(models.Model):
     longitude = models.IntegerField()
-    latitude = models.IntegerField()
+    # latitude = models.IntegerField()
 
 class Destination(models.Model):
     name = models.CharField(max_length =30)
@@ -22,7 +22,7 @@ class Driver(models.Model):
     user=models.OneToOneField(User,null = True, on_delete=models.CASCADE)
 
     name = models.CharField(max_length=30)
-    destination = models.ForeignKey(Pickup, on_delete=models.CASCADE,null=True)
+    destination = models.ForeignKey(Destination, on_delete=models.CASCADE,null=True)
     phone = models.IntegerField()
 
 

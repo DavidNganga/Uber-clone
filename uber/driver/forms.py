@@ -1,4 +1,4 @@
-from  .models import Driver, Car, Pickup, Destination
+from  .models import Driver, Car, Location, Destination
 from django import forms
 class DriveDetailsForm(forms.ModelForm):
     class Meta:
@@ -16,9 +16,9 @@ class CarForm(forms.ModelForm):
         'tags': forms.CheckboxSelectMultiple(),
         }
 
-class PickupForm(forms.ModelForm):
+class LocationForm(forms.ModelForm):
     class Meta:
-        model = Pickup
+        model = Location
         exclude = []
         widgets = {
         'tags': forms.CheckboxSelectMultiple(),

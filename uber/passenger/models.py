@@ -1,7 +1,7 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
-from driver.models import Car, Pickup, Driver, Destination
+from driver.models import Car, Location, Driver, Destination
 
 class Passenger(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
@@ -9,7 +9,7 @@ class Passenger(models.Model):
     name=models.CharField(max_length=50)
     location=models.ForeignKey(Location ,related_name='passenger_location')
     pickup=models.ForeignKey(Location)
-    passenger_destination=models.ForeignKey(Destination)
+    destination=models.ForeignKey(Destination)
 
     def __str__(self):
         return self.name
