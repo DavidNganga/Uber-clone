@@ -3,11 +3,13 @@
 {% load static%}
 {% block content %}
 
+
+
   <div class="container mt-2">
       <div class="row">
         <div class="col- mx-auto p-5" style="background-color:#ffffff; border: 1px solid #e6e6e6;">
           <div class="profile p-4" style="white-space:nowrap">
-            <h2>Hello driver, where are we headed today?</h2>
+            <h2>Hello passenger, where are we headed today?</h2>
           </div>
         </div>
       </div>
@@ -15,31 +17,30 @@
       <table style="width:95%;">
         <tbody>
           <tr>
-            <td style="width: 25%;">       <form action=" {% url 'destination'%} ">
-                  <input type="submit" value="Set Destination" />
+            <td style="width: 25%;">       <form action="#">
+                  <input type="submit" value="Book a ride" />
               </form>                  </td>
             <br>
             <br>
             <br>
-            <td style="width: 25%;">         <form action=" {% url 'drivedetails'%} ">
-                  <input type="submit" value="Credentials" />
+            <td style="width: 25%;">         <form action="{% url 'passengerdetails' %}">
+                  <input type="submit" value="edit prof" />
               </form>             </td>
             <br>
             <br>
             <br>
-            <td style="width: 25%;">  <form action=" {% url 'cardetails'%} ">
-                  <input type="submit" value="Choose your car" />
+            <td style="width: 25%;">  <form action="#">
+                  <input type="submit" value="xxx" />
               </form>  </td>
               <br>
               <br>
               <br>
-              <td >   <form action=" {% url 'locationdetails'%} ">
-                    <input type="submit" value="Where are you now?" />
+              <td >   <form action="#">
+                    <input type="submit" value="xxx" />
                 </form> </td>
 
           </tr>
-          
+
         </tbody>
-      </table>
 
 {% endblock %}

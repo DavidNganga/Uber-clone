@@ -1,6 +1,6 @@
 from  .models import Driver, Car, Location, Destination
 from django import forms
-class DriveDetailsForm(forms.ModelForm):
+class DriverForm(forms.ModelForm):
     class Meta:
         model = Driver
         exclude = ["user"]

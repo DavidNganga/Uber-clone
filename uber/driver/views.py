@@ -1,23 +1,32 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .forms import DriveDetailsForm, CarForm, LocationForm
+from .forms import DriverForm, CarForm, LocationForm, DestinationForm
+from .models import Car,Location, Destination, Driver
 # Create your views here.
-@login_required()
+
+def uber(request):
+    '''
+    function for the landing page of the driver
+    '''
+    return render(request, 'uber.html')
+
 def welcome(request):
     return render(request, 'welcome.html' )
 
 def drive(request):
     current_user = request.user
+
     if request.method == 'POST':
-        form = DriveDetailsForm(request.POST, request.FILES)
+        form = DriverForm(request.POST, request.FILES)
         if form.is_valid():
-            driver = form.save(commit=False)
-            driver.user = current_user
-            driver.save()
-            return redirect('welcome')
+            drive = form.save(commit=False)
+
+            drive.user = current_user
+            drive.save()
+            return redirect('driverwelcome')
     else:
-        form = DriveDetailsForm()
+        form = DriverForm()
     return render(request, 'drivedetails.html', {"form": form})
 
 
@@ -29,23 +38,23 @@ def car(request):
             car = form.save(commit=False)
             car.user = current_user
             car.save()
-            return redirect('welcome')
+            return redirect('driverwelcome')
     else:
         form = CarForm()
     return render(request, 'cardetails.html', {"form": form})
 
-def pickup(request):
+def location(request):
     current_user = request.user
     if request.method == 'POST':
-        form =  PickupForm(request.POST, request.FILES)
+        form =  LocationForm(request.POST, request.FILES)
         if form.is_valid():
-            pickup = form.save(commit=False)
-            pickup.user = current_user
-            pickup.save()
-            return redirect('welcome')
+            location = form.save(commit=False)
+            location.user = current_user
+            location.save()
+            return redirect('driverwelcome')
     else:
-        form = PickupForm()
-    return render(request, 'pickupdetails.html', {"form": form})
+        form = LocationForm()
+    return render(request, 'locationdetails.html', {"form": form})
 
 
 def destination(request):
@@ -53,10 +62,10 @@ def destination(request):
     if request.method == 'POST':
         form =  DestinationForm(request.POST, request.FILES)
         if form.is_valid():
-            tags = form.save(commit=False)
-            tags.user = current_user
-            tags.save()
-            return redirect('welcome')
+            destination = form.save(commit=False)
+            destination.user = current_user
+            destination.save()
+            return redirect('driverwelcome')
     else:
         form = DestinationForm()
     return render(request, 'destination.html', {"form": form})

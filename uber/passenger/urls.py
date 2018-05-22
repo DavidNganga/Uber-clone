@@ -3,6 +3,8 @@ from . import views
 
 
 urlpatterns=[
-    url(r'^$',views.passengerwelcome,name = 'welcome'),
-
+    url(r'^passengerwelcome/',views.passengerwelcome,name = 'passengerwelcome'),
+    url(r'^search/',views.search, name='search'),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^passengerdetails/',views.passenger,name = 'passengerdetails'),
 ]

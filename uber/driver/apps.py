@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class TaxiConfig(AppConfig):
-    name = 'taxi'
+class DriverConfig(AppConfig):
+    name = 'driver'
