@@ -23,9 +23,9 @@ class Destination(models.Model):
 
     @classmethod
     def search(cls,search_term):
-         destinations = cls.objects.filter(name__icontains=search_term)
+         names = cls.objects.filter(name__icontains=search_term)
 
-         return destinations
+         return names
 
 
 

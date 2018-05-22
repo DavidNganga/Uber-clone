@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+
+from driver.models import Car, Location, Driver, Destination
 from .forms import PassengerDetailsForm
 # Create your views here.
-
+@login_required(login_url='/accounts/login')
 def passengerwelcome(request):
     return render(request, 'passenger_welcome.html' )
 
@@ -21,8 +23,8 @@ def passenger(request):
     return render(request, 'passengerdetails.html', {"form": form})
 
 def search(request):
-    if 'destination' in request.GET and request.GET["destination"]:
-        search_term = request.GET.get("destination")
+    if 'name' in request.GET and request.GET["name"]:
+        search_term = request.GET.get("name")
         destinations = Destination.search(search_term)
         message = f"{search_term}"
         return render(request, 'search.html',{"message":message,"destinations":destinations})
